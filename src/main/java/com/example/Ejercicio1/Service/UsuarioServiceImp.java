@@ -2,19 +2,17 @@ package com.example.Ejercicio1.Service;
 
 import com.example.Ejercicio1.Entity.Usuario;
 import com.example.Ejercicio1.Repository.UsuarioRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UsuarioServiceImp implements UsuarioService{
 
     private final UsuarioRepository usuarioRepository;
-
-    public UsuarioServiceImp(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
 
     @Override
     public Usuario crearUsuario(Usuario usuario) {
