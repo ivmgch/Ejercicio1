@@ -1,69 +1,37 @@
 package com.example.Ejercicio1.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
 @Entity
 @Table(name = "usuarios")
-
+@Data
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank(message = "El nombre es obligatoriio")
+    @Size(min = 2,max = 10)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @NotBlank
+    @Email
+    @Column(unique = true, nullable = false)
     private String correo;
+
+    @Min(18)
     private Integer edad;
 
-    public Usuario() {
-    }
 
-    public Usuario(String correo, Integer edad, long id, String nombre) {
-        this.correo = correo;
-        this.edad = edad;
-        this.id = id;
-        this.nombre = nombre;
-    }
 
-    public String getCorreo() {
-        return correo;
-    }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "correo='" + correo + '\'' +
-                ", id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", edad=" + edad +
-                '}';
-    }
 
 
 
