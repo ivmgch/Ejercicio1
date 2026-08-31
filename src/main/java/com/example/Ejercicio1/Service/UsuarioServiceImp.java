@@ -30,6 +30,16 @@ public class UsuarioServiceImp implements UsuarioService{
     }
 
     @Override
+    public Usuario actualizarUsuario(Long id, Usuario usuario){
+        if(!usuarioRepository.existsById(id)){
+            throw new RuntimeException("Usuario no existe");
+        }
+        usuario.setId(id);
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
+
+    @Override
     public void eliminarUsuario(Long id) {
         if(!usuarioRepository.existsById(id)){
             throw new RuntimeException("Usuario no existe");
